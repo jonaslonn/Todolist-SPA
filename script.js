@@ -33,26 +33,32 @@ console.log("Welcome to the Todolist");
     pInfo.textContent = "Todos in your list: " + data.length;
     contentEl.appendChild(pInfo);
 
-    var ulEl = document.createElement('ul');
-    ulEl.setAttribute('id', 'ulContent')
-    contentEl.appendChild(ulEl);
 
+    const tBodyEl = document.querySelector("tbody");
         for(i =0; i < data.length; i++) 
         {
-            console.log("Name: " + data[i].title);                
+            var trEl = document.createElement('tr');
+            tBodyEl.appendChild(trEl);       
 
-            let liEl = document.createElement('li');
-            liEl.textContent = data[i].id + ") " + data[i].amount + " pieces of " + data[i].title;
+            let tdElTitle = document.createElement('td');
+            tdElTitle.textContent = data[i].title;
+
+            let tdElAmount = document.createElement('td');
+            tdElAmount.textContent = data[i].amount;
             
+            let tdElDelete = document.createElement('td');
             let btnEl = document.createElement('button');
             btnEl.setAttribute('data-id', data[i].id);
             btnEl.addEventListener("click", onClickDelete);
             btnEl.style = "padding:8px;margin:5px; color:white; background-color:red;";
             btnEl.textContent = "delete";
+            
 
 
-            ulEl.appendChild(liEl);
-            liEl.appendChild(btnEl);
+            trEl.appendChild(tdElTitle);
+            trEl.appendChild(tdElAmount);
+            trEl.appendChild(tdElDelete);
+            tdElDelete.appendChild(btnEl);
 
         }
     }
