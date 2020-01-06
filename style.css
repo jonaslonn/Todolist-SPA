@@ -18,15 +18,17 @@ header {
     right:0;
     height:80px;
     color:rgb(245, 185, 55);
-    padding:15px 35px 15px 35px;
+    padding:15px 0 15px 0;
     border-bottom: red solid 4px;
+    margin-bottom:30px;
 
     display:flex;
     align-items: center;
+    justify-content: center;
 }
 
 header div {
-    width:50%;
+    width:440px;
 }
 
 .content {
@@ -43,6 +45,7 @@ input[type="text"] {
     box-sizing:border-box;
     margin:5px 10px 20px;
     transition: 1s ease;
+    width:70%;
   }
 
   input[type="text"]:hover {

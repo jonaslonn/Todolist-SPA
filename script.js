@@ -3,11 +3,9 @@
 
 console.log("Welcome to the Todolist");
 
-(function () {
+(function () {    
 
-    
-
-    requestList();
+    requestList(); // Skriver ut listan
 
     function reqListener() {
 
@@ -23,9 +21,14 @@ console.log("Welcome to the Todolist");
 
     function renderList(data) {
 
+    const contentEl = document.getElementById("content");
+
+    const pInfo = document.createElement('p');
+    contentEl.textContent = "Antal i din attgöra lista: " + data.length;    
+
     var ulEl = document.createElement('ul');
     ulEl.setAttribute('id', 'ulContent')
-    document.body.appendChild(ulEl);
+    contentEl.appendChild(ulEl);
 
         for(i =0; i < data.length; i++) 
         {
@@ -73,9 +76,6 @@ console.log("Welcome to the Todolist");
 
         const ob = { title: titleEl.value };
         postReq.send(JSON.stringify(ob));
-
-        // console.log(titleEl.value);
-        // const ulEl = document.querySelector("ul");
         
         requestList();
     }
