@@ -80,8 +80,14 @@ console.log("Welcome to the Todolist");
         postReq.setRequestHeader("Content-Type", "application/json");
 
         const titleEl = document.getElementById("title");
+        const amountEl = document.getElementById("amount");
 
-        const ob = { title: titleEl.value };
+        const ob = 
+                { 
+                    title: titleEl.value, 
+                    amount: amountEl.value 
+                };
+                
         postReq.send(JSON.stringify(ob));
         
         requestList();
