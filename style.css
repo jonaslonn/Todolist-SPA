@@ -18,6 +18,9 @@ p {
 td, th {
   font-family: 'Abel';
   font-size:1.1em; 
+  background-color: #E7E7E7;
+  padding:8px;
+  border: solid 2px #CCCCCC;
 }
 
 table {
@@ -25,9 +28,11 @@ table {
   box-sizing: border-box;
   
 }
-TD {
-  background-color: #E7E7E7;
-  padding:8px;
+
+TH {
+  background-color: rgb(245, 185, 55);
+  border: solid 2px #e9912d;
+
 }
 
 header {

@@ -9,11 +9,12 @@ console.log("Welcome to the Todolist");
 
     function reqListener() {
 
-        if(!!document.getElementById("ulContent"))
-        {
-            document.getElementById("ulContent").remove();
-            // document.getElementById("ulContent").innerHTML = '';
-        }  
+        document.querySelector("tbody").innerHTML = '';
+        // if(!!document.querySelector("tbody"))
+        // {
+        //     document.querySelector("tbody").remove();
+        //     // document.getElementById("ulContent").innerHTML = '';
+        // }  
       
         const data = JSON.parse(this.responseText);
         renderList(data.data);    
@@ -32,7 +33,6 @@ console.log("Welcome to the Todolist");
     pInfo.setAttribute('id', 'pInfo')
     pInfo.textContent = "Todos in your list: " + data.length;
     contentEl.appendChild(pInfo);
-
 
     const tBodyEl = document.querySelector("tbody");
         for(i =0; i < data.length; i++) 
