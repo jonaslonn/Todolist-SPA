@@ -23,8 +23,15 @@ console.log("Welcome to the Todolist");
 
     const contentEl = document.getElementById("content");
 
+    if(!!document.getElementById("pInfo"))
+    {
+        document.getElementById("pInfo").remove();
+    }  
+    
     const pInfo = document.createElement('p');
-    contentEl.textContent = "Antal i din attgöra lista: " + data.length;    
+    pInfo.setAttribute('id', 'pInfo')
+    pInfo.textContent = "Todos in your list: " + data.length;
+    contentEl.appendChild(pInfo);
 
     var ulEl = document.createElement('ul');
     ulEl.setAttribute('id', 'ulContent')
@@ -40,7 +47,7 @@ console.log("Welcome to the Todolist");
             let btnEl = document.createElement('button');
             btnEl.setAttribute('data-id', data[i].id);
             btnEl.addEventListener("click", onClickDelete);
-            btnEl.style = "margin:5px; color:white; background-color:red;";
+            btnEl.style = "padding:8px;margin:5px; color:white; background-color:red;";
             btnEl.textContent = "delete";
 
 

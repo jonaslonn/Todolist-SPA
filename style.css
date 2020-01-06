@@ -10,6 +10,11 @@ h1 {
     font-size:4em;
 }
 
+p, li {
+  font-family: 'Abel';
+  font-size:1.4em; 
+}
+
 header {
     background-color: #3d3d3d;
     width:100%;
