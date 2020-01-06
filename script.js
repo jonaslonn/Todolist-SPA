@@ -44,19 +44,18 @@ console.log("Welcome to the Todolist");
             tBodyEl.appendChild(trEl);       
 
             let tdElTitle = document.createElement('td');
-            inputTitle = document.createElement('input');
-            inputTitle.setAttribute('type', 'text');
-            inputTitle.setAttribute('id', "inputTitle" + data[i].id);
-            inputTitle.setAttribute('value', data[i].title);
-            inputTitle.style = "width:100%;";
-            
+                inputTitle = document.createElement('input');
+                inputTitle.setAttribute('type', 'text');
+                inputTitle.setAttribute('id', "inputTitle" + data[i].id);
+                inputTitle.setAttribute('value', data[i].title);
+                inputTitle.style = "width:100%;";            
 
             let tdElAmount = document.createElement('td');
-            inputAmount = document.createElement('input');
-            inputAmount.setAttribute('type', 'number');
-            inputAmount.setAttribute('id', "inputAmount" + data[i].id);
-            inputAmount.setAttribute('value', data[i].amount);
-            tdElAmount.textContent = " pieces";
+                inputAmount = document.createElement('input');
+                inputAmount.setAttribute('type', 'number');
+                inputAmount.setAttribute('id', "inputAmount" + data[i].id);
+                inputAmount.setAttribute('value', data[i].amount);
+                tdElAmount.textContent = " pieces";
             
             let tdElDelete = document.createElement('td');
             let btnEl = document.createElement('button');
@@ -71,7 +70,6 @@ console.log("Welcome to the Todolist");
                 btnElUpdate.style ='border-radius:25px;';
                 btnElUpdate.addEventListener("click", onClickUpdate);
 
-            
 
             trEl.appendChild(tdElTitle);
             tdElTitle.appendChild(inputTitle);
@@ -81,7 +79,6 @@ console.log("Welcome to the Todolist");
             tdElUpdate.appendChild(btnElUpdate)
             trEl.appendChild(tdElDelete);
             tdElDelete.appendChild(btnEl);
-
         }
     }
 
