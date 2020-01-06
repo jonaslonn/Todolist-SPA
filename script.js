@@ -44,19 +44,27 @@ console.log("Welcome to the Todolist");
             tdElTitle.textContent = data[i].title;
 
             let tdElAmount = document.createElement('td');
-            tdElAmount.textContent = data[i].amount;
+            tdElAmount.textContent = data[i].amount + " pieces";
             
             let tdElDelete = document.createElement('td');
             let btnEl = document.createElement('button');
-            btnEl.setAttribute('data-id', data[i].id);
-            btnEl.addEventListener("click", onClickDelete);
-            btnEl.style = "padding:8px;margin:5px; color:white; background-color:red;";
-            btnEl.textContent = "delete";
-            
+                btnEl.setAttribute('data-id', data[i].id);
+                btnEl.addEventListener("click", onClickDelete);
+                btnEl.style = "padding:8px;margin:5px; color:white; background-color:red;";
+                btnEl.textContent = "delete";  
 
+            let tdElUpdate = document.createElement('td');
+            let btnElUpdate = document.createElement('button');
+            btnElUpdate.textContent = "update";
+                // btnEl.setAttribute('data-id', data[i].id);
+                // btnEl.addEventListener("click", onClickDelete);
+
+            
 
             trEl.appendChild(tdElTitle);
             trEl.appendChild(tdElAmount);
+            trEl.appendChild(tdElUpdate);
+            tdElUpdate.appendChild(btnElUpdate)
             trEl.appendChild(tdElDelete);
             tdElDelete.appendChild(btnEl);
 
