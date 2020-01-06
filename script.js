@@ -46,24 +46,27 @@ console.log("Welcome to the Todolist");
             let tdElTitle = document.createElement('td');
             inputTitle = document.createElement('input');
             inputTitle.setAttribute('type', 'text');
-            inputTitle.setAttribute('id', "input" + data[i].id);
+            inputTitle.setAttribute('id', "inputTitle" + data[i].id);
             inputTitle.setAttribute('value', data[i].title);
+            inputTitle.style = "width:100%;";
             
 
-            // tdElTitle.textContent = data[i].title;
-
             let tdElAmount = document.createElement('td');
-            tdElAmount.textContent = data[i].amount + " pieces";
+            inputAmount = document.createElement('input');
+            inputAmount.setAttribute('type', 'number');
+            inputAmount.setAttribute('id', "inputAmount" + data[i].id);
+            inputAmount.setAttribute('value', data[i].amount);
+            tdElAmount.textContent = " pieces";
             
             let tdElDelete = document.createElement('td');
             let btnEl = document.createElement('button');
                 btnEl.setAttribute('data-id', data[i].id);
                 btnEl.addEventListener("click", onClickDelete);
-                btnEl.textContent = "delete";  
+                btnEl.innerHTML = "<i class='fas fa-trash-alt'></i> Delete";  
 
             let tdElUpdate = document.createElement('td');
             let btnElUpdate = document.createElement('button');
-                btnElUpdate.textContent = "update";
+                btnElUpdate.innerHTML = "<i class='fas fa-exchange-alt'></i>  Update";
                 btnElUpdate.setAttribute('data-id', data[i].id);
                 btnElUpdate.style ='border-radius:25px;';
                 btnElUpdate.addEventListener("click", onClickUpdate);
@@ -73,6 +76,7 @@ console.log("Welcome to the Todolist");
             trEl.appendChild(tdElTitle);
             tdElTitle.appendChild(inputTitle);
             trEl.appendChild(tdElAmount);
+            tdElAmount.prepend(inputAmount);
             trEl.appendChild(tdElUpdate);
             tdElUpdate.appendChild(btnElUpdate)
             trEl.appendChild(tdElDelete);
@@ -143,18 +147,15 @@ console.log("Welcome to the Todolist");
     
             putReq.open("PUT", "/todos/" + this.dataset.id);
             putReq.setRequestHeader("Content-Type", "application/json");
-    
-            // let newTitle = "tester";
-            let newAmount = 12;
-    
 
-            let newTitle = document.getElementById('input'+ this.dataset.id);
+            let newTitle = document.getElementById('inputTitle' + this.dataset.id);
+            let newAmount = document.getElementById('inputAmount' + this.dataset.id);
 
             console.log(this.dataset.id + newTitle.value);
             const newOb = 
                     { 
                         title: newTitle.value, 
-                        amount: newAmount 
+                        amount: newAmount.value 
                     };
     
             putReq.send(JSON.stringify(newOb));
