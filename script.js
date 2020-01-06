@@ -20,14 +20,16 @@ console.log("Welcome to the Todolist");
         renderList(data.data);    
     }
 
+
+
     function renderList(data) {
 
     const contentEl = document.getElementById("content");
 
-    if(!!document.getElementById("pInfo"))
-    {
-        document.getElementById("pInfo").remove();
-    }  
+        if(!!document.getElementById("pInfo"))
+        {
+            document.getElementById("pInfo").remove();
+        }  
     
     const pInfo = document.createElement('p');
     pInfo.setAttribute('id', 'pInfo')
@@ -35,13 +37,20 @@ console.log("Welcome to the Todolist");
     contentEl.appendChild(pInfo);
 
     const tBodyEl = document.querySelector("tbody");
+
         for(i =0; i < data.length; i++) 
         {
             var trEl = document.createElement('tr');
             tBodyEl.appendChild(trEl);       
 
             let tdElTitle = document.createElement('td');
-            tdElTitle.textContent = data[i].title;
+            inputTitle = document.createElement('input');
+            inputTitle.setAttribute('type', 'text');
+            inputTitle.setAttribute('id', "input" + data[i].id);
+            inputTitle.setAttribute('value', data[i].title);
+            
+
+            // tdElTitle.textContent = data[i].title;
 
             let tdElAmount = document.createElement('td');
             tdElAmount.textContent = data[i].amount + " pieces";
@@ -50,18 +59,19 @@ console.log("Welcome to the Todolist");
             let btnEl = document.createElement('button');
                 btnEl.setAttribute('data-id', data[i].id);
                 btnEl.addEventListener("click", onClickDelete);
-                btnEl.style = "padding:8px;margin:5px; color:white; background-color:red;";
                 btnEl.textContent = "delete";  
 
             let tdElUpdate = document.createElement('td');
             let btnElUpdate = document.createElement('button');
-            btnElUpdate.textContent = "update";
-                // btnEl.setAttribute('data-id', data[i].id);
-                // btnEl.addEventListener("click", onClickDelete);
+                btnElUpdate.textContent = "update";
+                btnElUpdate.setAttribute('data-id', data[i].id);
+                btnElUpdate.style ='border-radius:25px;';
+                btnElUpdate.addEventListener("click", onClickUpdate);
 
             
 
             trEl.appendChild(tdElTitle);
+            tdElTitle.appendChild(inputTitle);
             trEl.appendChild(tdElAmount);
             trEl.appendChild(tdElUpdate);
             tdElUpdate.appendChild(btnElUpdate)
@@ -124,7 +134,33 @@ console.log("Welcome to the Todolist");
     }
 
 
+        // Uppdatera todolista
+        function onClickUpdate(e) {
 
-    // put post
+            e.preventDefault();
+
+            const putReq = new XMLHttpRequest();
+    
+            putReq.open("PUT", "/todos/" + this.dataset.id);
+            putReq.setRequestHeader("Content-Type", "application/json");
+    
+            // let newTitle = "tester";
+            let newAmount = 12;
+    
+
+            let newTitle = document.getElementById('input'+ this.dataset.id);
+
+            console.log(this.dataset.id + newTitle.value);
+            const newOb = 
+                    { 
+                        title: newTitle.value, 
+                        amount: newAmount 
+                    };
+    
+            putReq.send(JSON.stringify(newOb));
+            
+            requestList();
+        }
+
 }())
 
