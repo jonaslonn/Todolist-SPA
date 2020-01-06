@@ -42,7 +42,7 @@ console.log("Welcome to the Todolist");
             console.log("Name: " + data[i].title);                
 
             let liEl = document.createElement('li');
-            liEl.textContent = data[i].id + ") " + data[i].title;
+            liEl.textContent = data[i].id + ") " + data[i].amount + " pieces of " + data[i].title;
             
             let btnEl = document.createElement('button');
             btnEl.setAttribute('data-id', data[i].id);
@@ -87,7 +87,7 @@ console.log("Welcome to the Todolist");
                     title: titleEl.value, 
                     amount: amountEl.value 
                 };
-                
+
         postReq.send(JSON.stringify(ob));
         
         requestList();
